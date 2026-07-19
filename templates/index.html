@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Electricity Bill Forecaster</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Electricity Bill Forecaster</h1>
+
+<form action="/predict" method="POST">
+
+<input type="number" name="family" placeholder="Family Members" required>
+
+<input type="number" name="ac" placeholder="Number of ACs" required>
+
+<input type="number" name="fans" placeholder="Number of Fans" required>
+
+<input type="number" name="fridge" placeholder="Refrigerators" required>
+
+<input type="number" name="tv" placeholder="TV Count" required>
+
+<input type="number" name="washing" placeholder="Washing Uses / Week" required>
+
+<input type="number" name="hours" placeholder="Daily Usage Hours" required>
+
+<input type="number" name="previous" placeholder="Previous Month Units" required>
+
+<input type="number" name="temperature" placeholder="Average Temperature" required>
+
+<button type="submit">
+
+Predict
+
+</button>
+
+</form>
+
+{% if units %}
+
+<div class="result">
+
+<h2>Prediction</h2>
+
+<p><strong>Estimated Units:</strong> {{ units }} kWh</p>
+
+<p><strong>Estimated Bill:</strong> ₹ {{ bill }}</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>
